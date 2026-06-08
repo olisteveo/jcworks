@@ -1,8 +1,7 @@
-import { Shield, Clock, ThumbsUp, Award } from 'lucide-react'
+import { Clock, ThumbsUp, Award } from 'lucide-react'
 
 const STATS = [
   { icon: Award, label: '12+ Years Experience', detail: 'Established building specialists' },
-  { icon: Shield, label: 'Fully Insured', detail: 'Public liability covered' },
   { icon: Clock, label: 'On Time, On Budget', detail: 'Reliable project delivery' },
   { icon: ThumbsUp, label: 'Free Quotations', detail: 'No obligation estimates' },
 ]
