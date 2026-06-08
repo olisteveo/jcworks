@@ -75,6 +75,15 @@ const PROJECTS: Project[] = [
     cover: 1,
     imageCount: 7,
   },
+  {
+    slug: 'bromley-driveway',
+    title: 'Driveway & Brick Wall',
+    location: 'Bromley',
+    category: 'Landscaping',
+    description: 'Full front garden conversion to block paved driveway with new brick boundary wall and stone caps. Includes drainage, membrane, and new front steps.',
+    cover: 1,
+    imageCount: 13,
+  },
 ]
 
 function imagePath(slug: string, index: number) {
