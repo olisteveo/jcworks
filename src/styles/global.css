@@ -845,7 +845,7 @@ ul {
 }
 
 .testimonials__card {
-  flex: 0 1 400px;
+  flex: 0 1 360px;
   background: var(--color-bg);
   padding: 32px;
   border-radius: var(--radius-lg);
