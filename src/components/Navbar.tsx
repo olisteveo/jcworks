@@ -30,7 +30,7 @@ function Navbar() {
   }
 
   return (
-    <nav className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
+    <nav className={`navbar${scrolled && !mobileOpen ? ' navbar--scrolled' : ''}${mobileOpen ? ' navbar--menu-open' : ''}`}>
       <div className="navbar__inner">
         <a href="#home" className="navbar__logo" onClick={(e) => handleClick(e, '#home')}>
           <img src="/logo.png" alt="JC Works" className="navbar__logo-img" />

@@ -273,6 +273,20 @@ ul {
     display: block;
     z-index: 1001;
   }
+
+  .navbar--menu-open {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+
+  .navbar--menu-open .navbar__logo-text {
+    color: var(--color-text-inverse);
+  }
+
+  .navbar--menu-open .navbar__toggle {
+    color: var(--color-text-inverse);
+  }
 }
 
 /* -- Hero -- */
@@ -812,12 +826,14 @@ ul {
 }
 
 .testimonials__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 24px;
+  justify-content: center;
 }
 
 .testimonials__card {
+  flex: 0 1 400px;
   background: var(--color-bg);
   padding: 32px;
   border-radius: var(--radius-lg);

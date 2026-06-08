@@ -9,21 +9,15 @@ interface Testimonial {
 
 const TESTIMONIALS: Testimonial[] = [
   {
-    name: 'Your Name Here',
-    location: 'London',
-    text: 'This is a placeholder testimonial. Replace it with a real review from a satisfied customer to build trust with potential clients.',
+    name: 'Jane',
+    location: 'Bickley',
+    text: 'The boys were very reasonable with their quoted price and completed the work very quickly to exactly the standard I desired. I will be using them for my roof repairs in the summer.',
     rating: 5,
   },
   {
-    name: 'Your Name Here',
-    location: 'Kent',
-    text: 'Another placeholder review. Real testimonials from past clients make a huge difference. Ask your best customers for a few words about their experience.',
-    rating: 5,
-  },
-  {
-    name: 'Your Name Here',
-    location: 'London',
-    text: 'A third placeholder. Aim for 3-6 genuine reviews covering different types of work (extensions, kitchens, renovations) to show the breadth of your services.',
+    name: 'Oliver',
+    location: 'Bromley',
+    text: 'Josh and Clark completed work on my driveway, they gave me a good price and completed the work on schedule and 10/10 quality.',
     rating: 5,
   },
 ]
