@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const SLIDES = [
@@ -25,16 +25,31 @@ const SLIDES = [
   { src: '/projects/hero/21.jpg', alt: 'Rendering progress, Beckenham' },
 ]
 
+const INTERVAL = 4500
+
 function HeroSlideshow() {
   const [current, setCurrent] = useState(0)
+  const [loaded, setLoaded] = useState<Set<number>>(new Set([0]))
 
-  const prev = useCallback(() => {
-    setCurrent((c) => (c - 1 + SLIDES.length) % SLIDES.length)
+  const goTo = useCallback((index: number) => {
+    setCurrent((index + SLIDES.length) % SLIDES.length)
   }, [])
 
-  const next = useCallback(() => {
-    setCurrent((c) => (c + 1) % SLIDES.length)
-  }, [])
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((c) => (c + 1) % SLIDES.length)
+    }, INTERVAL)
+    return () => clearInterval(timer)
+  }, [current])
+
+  useEffect(() => {
+    const next = (current + 1) % SLIDES.length
+    if (!loaded.has(next)) {
+      const img = new Image()
+      img.src = SLIDES[next].src
+      img.onload = () => setLoaded((prev) => new Set(prev).add(next))
+    }
+  }, [current, loaded])
 
   return (
     <div className="hero-slideshow">
@@ -46,15 +61,12 @@ function HeroSlideshow() {
           <img src={slide.src} alt={slide.alt} loading={i === 0 ? 'eager' : 'lazy'} />
         </div>
       ))}
-      <button className="hero-slideshow__arrow hero-slideshow__arrow--left" onClick={prev} aria-label="Previous slide">
+      <button className="hero-slideshow__arrow hero-slideshow__arrow--left" onClick={() => goTo(current - 1)} aria-label="Previous slide">
         <ChevronLeft size={28} />
       </button>
-      <button className="hero-slideshow__arrow hero-slideshow__arrow--right" onClick={next} aria-label="Next slide">
+      <button className="hero-slideshow__arrow hero-slideshow__arrow--right" onClick={() => goTo(current + 1)} aria-label="Next slide">
         <ChevronRight size={28} />
       </button>
-      <div className="hero-slideshow__counter">
-        {current + 1} / {SLIDES.length}
-      </div>
     </div>
   )
 }
