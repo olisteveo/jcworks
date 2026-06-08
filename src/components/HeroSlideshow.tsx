@@ -1,14 +1,30 @@
 import { useState, useEffect, useCallback } from 'react'
 
 const SLIDES = [
-  { src: '/projects/hero/1.jpg', alt: 'Bedroom refurbishment, Bromley Common' },
-  { src: '/projects/hero/2.jpg', alt: 'Crazy paving patio, Locks Bottom' },
-  { src: '/projects/hero/3.jpg', alt: 'Pebble driveway, Swanley' },
-  { src: '/projects/hero/4.jpg', alt: 'Rendering and painting, Beckenham' },
-  { src: '/projects/hero/5.jpg', alt: 'House repaint, Bickley' },
+  { src: '/projects/hero/1.jpg', alt: 'Pebble driveway, Swanley' },
+  { src: '/projects/hero/2.jpg', alt: 'Pebble driveway progress, Swanley' },
+  { src: '/projects/hero/3.jpg', alt: 'Crazy paving patio, Locks Bottom' },
+  { src: '/projects/hero/4.jpg', alt: 'Crazy paving progress, Locks Bottom' },
+  { src: '/projects/hero/5.jpg', alt: 'Rendering work, Keston' },
+  { src: '/projects/hero/6.jpg', alt: 'Rendering progress, Keston' },
+  { src: '/projects/hero/7.jpg', alt: 'Brickwork, Keston' },
+  { src: '/projects/hero/8.jpg', alt: 'Bedroom refurbishment, Bromley Common' },
+  { src: '/projects/hero/9.jpg', alt: 'Bedroom refurbishment progress, Bromley Common' },
+  { src: '/projects/hero/10.jpg', alt: 'Bedroom complete, Bromley Common' },
+  { src: '/projects/hero/11.jpg', alt: 'Bedroom before, Bromley Common' },
+  { src: '/projects/hero/12.jpg', alt: 'Soffit and fascia, Bickley' },
+  { src: '/projects/hero/13.jpg', alt: 'Soffit and fascia progress, Bickley' },
+  { src: '/projects/hero/14.jpg', alt: 'Soffit and fascia before, Bickley' },
+  { src: '/projects/hero/15.jpg', alt: 'House repaint, Bickley' },
+  { src: '/projects/hero/16.jpg', alt: 'House repaint complete, Bickley' },
+  { src: '/projects/hero/17.jpg', alt: 'House repaint before, Bickley' },
+  { src: '/projects/hero/18.jpg', alt: 'House repaint detail, Bickley' },
+  { src: '/projects/hero/19.jpg', alt: 'Rendering and painting, Beckenham' },
+  { src: '/projects/hero/20.jpg', alt: 'Rendering complete, Beckenham' },
+  { src: '/projects/hero/21.jpg', alt: 'Rendering progress, Beckenham' },
 ]
 
-const INTERVAL = 4500
+const INTERVAL = 3500
 
 function HeroSlideshow() {
   const [current, setCurrent] = useState(0)
@@ -42,15 +58,8 @@ function HeroSlideshow() {
           <img src={slide.src} alt={slide.alt} loading={i === 0 ? 'eager' : 'lazy'} />
         </div>
       ))}
-      <div className="hero-slideshow__dots">
-        {SLIDES.map((_, i) => (
-          <button
-            key={i}
-            className={`hero-slideshow__dot${i === current ? ' hero-slideshow__dot--active' : ''}`}
-            onClick={() => setCurrent(i)}
-            aria-label={`View slide ${i + 1}`}
-          />
-        ))}
+      <div className="hero-slideshow__counter">
+        {current + 1} / {SLIDES.length}
       </div>
     </div>
   )

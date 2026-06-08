@@ -405,31 +405,17 @@ ul {
   object-fit: cover;
 }
 
-.hero-slideshow__dots {
+.hero-slideshow__counter {
   position: absolute;
-  bottom: 14px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 8px;
+  bottom: 12px;
+  right: 14px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 12px;
   z-index: 2;
-}
-
-.hero-slideshow__dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.4);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 0;
-}
-
-.hero-slideshow__dot--active {
-  background: var(--color-accent-light);
-  width: 24px;
-  border-radius: 4px;
+  letter-spacing: 0.5px;
 }
 
 @media (max-width: 900px) {
