@@ -50,29 +50,23 @@ function Navbar() {
               Get a Quote
             </a>
           </li>
-          <li className="navbar__social-mobile">
-            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <Instagram size={24} />
-            </a>
-          </li>
         </ul>
 
-        <div className="navbar__actions">
+        <div className="navbar__right">
           <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="navbar__social" aria-label="Instagram">
-            <Instagram size={20} />
+            <Instagram size={22} />
           </a>
           <a href="#contact" className="btn btn--primary navbar__cta-desktop" onClick={(e) => handleClick(e, '#contact')}>
             Get a Quote
           </a>
+          <button
+            className="navbar__toggle"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle navigation"
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
-
-        <button
-          className="navbar__toggle"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle navigation"
-        >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
       </div>
     </nav>
   )

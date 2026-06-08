@@ -218,7 +218,7 @@ ul {
   color: var(--color-accent);
 }
 
-.navbar__actions {
+.navbar__right {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -239,8 +239,11 @@ ul {
   color: var(--color-primary);
 }
 
-.navbar__cta-mobile,
-.navbar__social-mobile {
+.navbar--menu-open .navbar__social {
+  color: var(--color-text-inverse);
+}
+
+.navbar__cta-mobile {
   display: none;
 }
 
@@ -284,28 +287,13 @@ ul {
     color: var(--color-text-inverse) !important;
   }
 
-  .navbar__actions {
+  .navbar__cta-desktop {
     display: none;
   }
 
   .navbar__cta-mobile {
     display: block;
     margin-top: 16px;
-  }
-
-  .navbar__social-mobile {
-    display: block;
-    margin-top: 12px;
-  }
-
-  .navbar__social-mobile a {
-    color: var(--color-text-inverse);
-    display: inline-flex;
-    transition: opacity var(--transition);
-  }
-
-  .navbar__social-mobile a:hover {
-    opacity: 0.7;
   }
 
   .navbar__toggle {
