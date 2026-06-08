@@ -3,8 +3,6 @@ import { Mail, MapPin, Phone, Send, CheckCircle, AlertCircle } from 'lucide-reac
 
 type FormStatus = 'idle' | 'sending' | 'success' | 'error'
 
-const FORMSPREE_ID = 'YOUR_FORMSPREE_ID'
-
 function Contact() {
   const [status, setStatus] = useState<FormStatus>('idle')
 
@@ -14,12 +12,16 @@ function Contact() {
 
     const form = e.currentTarget
     const data = new FormData(form)
+    const payload = Object.fromEntries(data.entries())
 
     try {
-      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      const res = await fetch('https://formsubmit.co/ajax/jcworks.se@gmail.com', {
         method: 'POST',
-        body: data,
-        headers: { Accept: 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(payload),
       })
 
       if (res.ok) {
