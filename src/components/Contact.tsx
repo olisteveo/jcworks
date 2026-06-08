@@ -1,16 +1,12 @@
 import { useState } from 'react'
 import { Mail, MapPin, Phone, Send, CheckCircle, AlertCircle } from 'lucide-react'
 
+const WEB3FORMS_KEY = '6a281482-f6dd-4ce9-a8a9-a62aea9ea743'
+
 type FormStatus = 'idle' | 'sending' | 'success' | 'error'
 
 function Contact() {
-  const [status, setStatus] = useState<FormStatus>(() => {
-    if (typeof window !== 'undefined' && window.location.hash === '#form-sent') {
-      window.history.replaceState(null, '', window.location.pathname + '#contact')
-      return 'success'
-    }
-    return 'idle'
-  })
+  const [status, setStatus] = useState<FormStatus>('idle')
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -18,22 +14,24 @@ function Contact() {
 
     const form = e.currentTarget
     const data = new FormData(form)
+    data.append('access_key', WEB3FORMS_KEY)
+    data.append('subject', 'New Quote Request - JC Works Website')
 
     try {
-      const res = await fetch(form.action, {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         body: data,
-        headers: { Accept: 'application/json' },
       })
 
-      if (res.ok) {
+      const json = await res.json()
+      if (json.success) {
         setStatus('success')
         form.reset()
       } else {
         setStatus('error')
       }
     } catch {
-      form.submit()
+      setStatus('error')
     }
   }
 
@@ -49,17 +47,7 @@ function Contact() {
         </div>
 
         <div className="contact__grid">
-          <form
-            className="contact__form"
-            action="https://formsubmit.co/jcworks.se@gmail.com"
-            method="POST"
-            onSubmit={handleSubmit}
-          >
-            <input type="hidden" name="_next" value="https://www.jcworksse.com/#form-sent" />
-            <input type="hidden" name="_subject" value="New Quote Request - JC Works Website" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_template" value="table" />
-
+          <form className="contact__form" onSubmit={handleSubmit}>
             <div className="contact__row">
               <div className="contact__field">
                 <label htmlFor="name">Name</label>
