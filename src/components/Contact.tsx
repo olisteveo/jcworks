@@ -4,7 +4,13 @@ import { Mail, MapPin, Phone, Send, CheckCircle, AlertCircle } from 'lucide-reac
 type FormStatus = 'idle' | 'sending' | 'success' | 'error'
 
 function Contact() {
-  const [status, setStatus] = useState<FormStatus>('idle')
+  const [status, setStatus] = useState<FormStatus>(() => {
+    if (typeof window !== 'undefined' && window.location.hash === '#form-sent') {
+      window.history.replaceState(null, '', window.location.pathname + '#contact')
+      return 'success'
+    }
+    return 'idle'
+  })
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -12,16 +18,12 @@ function Contact() {
 
     const form = e.currentTarget
     const data = new FormData(form)
-    const payload = Object.fromEntries(data.entries())
 
     try {
-      const res = await fetch('https://formsubmit.co/ajax/jcworks.se@gmail.com', {
+      const res = await fetch(form.action, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify(payload),
+        body: data,
+        headers: { Accept: 'application/json' },
       })
 
       if (res.ok) {
@@ -31,7 +33,7 @@ function Contact() {
         setStatus('error')
       }
     } catch {
-      setStatus('error')
+      form.submit()
     }
   }
 
@@ -47,7 +49,17 @@ function Contact() {
         </div>
 
         <div className="contact__grid">
-          <form className="contact__form" onSubmit={handleSubmit}>
+          <form
+            className="contact__form"
+            action="https://formsubmit.co/jcworks.se@gmail.com"
+            method="POST"
+            onSubmit={handleSubmit}
+          >
+            <input type="hidden" name="_next" value="https://www.jcworksse.com/#form-sent" />
+            <input type="hidden" name="_subject" value="New Quote Request - JC Works Website" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+
             <div className="contact__row">
               <div className="contact__field">
                 <label htmlFor="name">Name</label>
