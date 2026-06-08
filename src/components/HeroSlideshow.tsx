@@ -23,6 +23,8 @@ const SLIDES = [
   { src: '/projects/hero/19.jpg', alt: 'Rendering and painting, Beckenham' },
   { src: '/projects/hero/20.jpg', alt: 'Rendering complete, Beckenham' },
   { src: '/projects/hero/21.jpg', alt: 'Rendering progress, Beckenham' },
+  { src: '/projects/hero/22.jpg', alt: 'Driveway before, Bromley' },
+  { src: '/projects/hero/23.jpg', alt: 'Block paved driveway, Bromley' },
 ]
 
 const INTERVAL = 4500
