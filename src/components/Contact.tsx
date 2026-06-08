@@ -1,5 +1,7 @@
 import { useState } from 'react'
-import { Mail, MapPin, Phone, Send, CheckCircle, AlertCircle } from 'lucide-react'
+import { Mail, MapPin, Phone, Send, CheckCircle, AlertCircle, Instagram } from 'lucide-react'
+
+const INSTAGRAM_URL = 'https://www.instagram.com/jcworks.se'
 
 const WEB3FORMS_KEY = '6a281482-f6dd-4ce9-a8a9-a62aea9ea743'
 
@@ -154,6 +156,10 @@ function Contact() {
               <div className="contact__info-item">
                 <MapPin size={20} />
                 <span>Serving London & Kent</span>
+              </div>
+              <div className="contact__info-item">
+                <Instagram size={20} />
+                <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">@jcworks.se</a>
               </div>
             </div>
 

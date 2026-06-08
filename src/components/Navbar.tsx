@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Instagram } from 'lucide-react'
+
+const INSTAGRAM_URL = 'https://www.instagram.com/jcworks.se'
 
 const NAV_LINKS = [
   { label: 'Home', href: '#home' },
@@ -48,11 +50,21 @@ function Navbar() {
               Get a Quote
             </a>
           </li>
+          <li className="navbar__social-mobile">
+            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <Instagram size={24} />
+            </a>
+          </li>
         </ul>
 
-        <a href="#contact" className="btn btn--primary navbar__cta-desktop" onClick={(e) => handleClick(e, '#contact')}>
-          Get a Quote
-        </a>
+        <div className="navbar__actions">
+          <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="navbar__social" aria-label="Instagram">
+            <Instagram size={20} />
+          </a>
+          <a href="#contact" className="btn btn--primary navbar__cta-desktop" onClick={(e) => handleClick(e, '#contact')}>
+            Get a Quote
+          </a>
+        </div>
 
         <button
           className="navbar__toggle"

@@ -218,7 +218,29 @@ ul {
   color: var(--color-accent);
 }
 
-.navbar__cta-mobile {
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navbar__social {
+  color: var(--color-text-inverse);
+  display: flex;
+  align-items: center;
+  transition: opacity var(--transition);
+}
+
+.navbar__social:hover {
+  opacity: 0.7;
+}
+
+.navbar--scrolled .navbar__social {
+  color: var(--color-primary);
+}
+
+.navbar__cta-mobile,
+.navbar__social-mobile {
   display: none;
 }
 
@@ -262,13 +284,28 @@ ul {
     color: var(--color-text-inverse) !important;
   }
 
-  .navbar__cta-desktop {
+  .navbar__actions {
     display: none;
   }
 
   .navbar__cta-mobile {
     display: block;
     margin-top: 16px;
+  }
+
+  .navbar__social-mobile {
+    display: block;
+    margin-top: 12px;
+  }
+
+  .navbar__social-mobile a {
+    color: var(--color-text-inverse);
+    display: inline-flex;
+    transition: opacity var(--transition);
+  }
+
+  .navbar__social-mobile a:hover {
+    opacity: 0.7;
   }
 
   .navbar__toggle {
